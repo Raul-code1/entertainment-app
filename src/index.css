@@ -1,0 +1,163 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+html{
+  font-size: 100%;
+}
+
+
+:root{
+  /* Colors */
+  --black:#000;
+  --backgroundColor:#10141E;
+  --textColor:#ffffff;
+  --secondaryTextColor:#C3C4C7;
+  --linksTextColor:#546285;
+  --btnBgColor:#546285;
+  --sideBarBgColor:#171E31;
+  
+  --hoversColor:#FC4747;
+  --bgHoversColor:#ffffff;
+
+  /* Font */
+  --mainFont: 'Outfit', sans-serif;
+
+  /* Others vars */
+  --borderRadius:.5rem;
+  --transition:all 0.3s ease-in-out;
+  --breakPoint:800px;
+  --maxWidth:1200px;
+  --letterSpacing:1px;
+  --navBarHeight:100px;
+
+}
+
+a{
+  text-decoration: none;
+}
+
+ul{
+  list-style: none;
+}
+
+body{
+  background-color: var(--backgroundColor);
+  color: var(--textColor);
+  font-family: var(--mainFont);
+}
+
+/* Headings */
+h1, h2,h3, h4, h5{
+  text-transform: capitalize;
+}
+
+h1{
+  font-size: 3rem;
+}
+h2{
+  font-size: 1.9rem;
+}
+h3{
+  font-size: 1.5rem;
+}
+
+/* Images */
+.img{
+  width: 100%;
+  display: block;
+  object-fit:cover;
+}
+
+/* Links */
+
+.links{
+  color: var(--linksTextColor);
+  letter-spacing: var(--letterSpacing);
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.links:hover{
+  color: var(--textColor);
+  text-decoration: underline;
+}
+
+/* Nav bars links */
+.nav-bars-links {
+  color: var(--textColor);
+  font-size: 1.5625rem;
+}
+
+.active {
+  color: var(--hoversColor);
+}
+
+
+
+/* Buttons */
+.btn{
+  border: none;
+  padding: .625rem .8125rem;
+  border-radius: var(--borderRadius);
+  text-transform:capitalize;
+  background-color: var(--btnBgColor);
+  color: var(--textColor);
+  transition: var(--transition);
+  font-weight: 200;
+  cursor: pointer;
+}
+
+.btn:hover{
+  background-color: var(--bgHoversColor);
+  color: var(--black);
+}
+
+
+/* Icons */
+.icons{
+  color: var(--linksTextColor);
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.icons:hover{
+  color: var(--hoversColor);
+}
+
+/* sections */
+.section{
+  width: 95%;
+  margin: 0 auto;
+}
+
+
+@media screen and ( min-width:1000px ) {
+  .section{
+    width: 90%;
+  }
+
+}
+
+
+.type-span{
+  font-weight: 100;
+  font-size: 1.0625rem;
+  padding: .3125rem .625rem;
+  border-radius: var(--borderRadius);
+  border: 1px solid var(--textColor);
+}
+
+
+/* Grid home container span colums */
+@media  screen and ( min-width:1000px ) {
+  .span-col-item{
+    grid-column: span 2; 
+    
+  }
+
+}
