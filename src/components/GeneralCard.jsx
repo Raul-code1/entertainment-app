@@ -1,29 +1,52 @@
 import moment from "moment/moment";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import { imgLink } from "../utils/apiHelpers";
+import {  gettingPath } from "../features/details/detailsSlice";
 
-        
-const GeneralCard = ({spanCol,toSonType,release_date,backdrop_path,original_title,id,name,first_air_date,poster_path }) => {
-  
-  const navigate =useNavigate()
+const GeneralCard = ({
+  spanCol,
+  toSonType,
+  release_date,
+  backdrop_path,
+  original_title,
+  id,
+  name,
+  first_air_date,
+  poster_path,
+}) => {
+  const dispatch=useDispatch()
+  const navigate = useNavigate();
 
-  const date=moment(release_date || first_air_date).format('YYYY')
-  const typeForPath =toSonType.toLowerCase();
+  const date = moment(release_date || first_air_date).format("YYYY");
+  const pathForDetails = `/${toSonType.toLowerCase()}`
+
+  const handleDetailsPageContent=()=>{
+    navigate(`${pathForDetails}/${id}`)
+    dispatch(gettingPath(pathForDetails))
+    
+  }
 
   return (
-        
-    <CardWrapper className={`${(spanCol)&&'span-col-item'}`} onClick={()=>navigate(`/${typeForPath}/${id}`)} >
+    <CardWrapper
+      className={`${spanCol && "span-col-item"}`}
+      onClick={ handleDetailsPageContent}
+    >
       <div className="img-card-container">
-        <img src={`${imgLink}${backdrop_path ||poster_path}`} alt={original_title || name} className="img" />
+        <img
+          src={`${imgLink}${backdrop_path || poster_path}`}
+          alt={original_title || name}
+          className="img"
+        />
       </div>
       <div className="info-card-container">
         <div className="info-first-child">
-          <span>{date}  -</span>
-          <span>{toSonType.toUpperCase()}</span>
+          <span>{date} -</span>
+          <span>{ toSonType.toUpperCase()}</span>
         </div>
-        <div className="info-second-child" >
+        <div className="info-second-child">
           <h4>{original_title || name}</h4>
         </div>
       </div>
@@ -34,47 +57,36 @@ const GeneralCard = ({spanCol,toSonType,release_date,backdrop_path,original_titl
 export default GeneralCard;
 
 const CardWrapper = styled.div`
-
   padding-top: 1.25rem;
   cursor: pointer;
- 
+
   .img-card-container {
     overflow: hidden;
     border-radius: var(--borderRadius);
   }
   .info-card-container {
+    padding-top: 0.625rem;
 
-    padding-top: .625rem;
-
-    .info-first-child{
-      font-size: .625rem;
+    .info-first-child {
+      font-size: 0.625rem;
     }
-    
-    .info-second-child{
-      h4{
-      font-weight: 100;
 
+    .info-second-child {
+      h4 {
+        font-weight: 100;
       }
-      font-size: .875rem;
-
+      font-size: 0.875rem;
     }
-    
   }
-  
-  @media  ( min-width:1000px ) {
-    .info-card-container{
-      
-      .info-first-child{
-        font-size: .9375rem;
-        
+
+  @media (min-width: 1000px) {
+    .info-card-container {
+      .info-first-child {
+        font-size: 0.9375rem;
       }
-      .info-second-child{
+      .info-second-child {
         font-size: 1.125rem;
       }
-
     }
   }
-
- 
-
 `;

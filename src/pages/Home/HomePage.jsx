@@ -35,13 +35,13 @@ const HomePage = () => {
   return (
     <ContentWrapper className="section">
       {/* Movie content*/}
-      <SliderComponent text="Movies" data={trendingMovies} />
       <GridHomeContainer title="Popular" type="movie" data={popularMovies} />
+      <SliderComponent text="Movies" data={trendingMovies} />
       <GridHomeContainer title="Upcoming" type="movie" data={upcomingMovies} />
       <GridHomeContainer title="Top rated" type="movie" data={topRatedMovies} />
       {/* Tv content */}
-      <SliderComponent text="TV" data={trendingTv} />
       <GridHomeContainer title="Top rated" type="tv" data={topRatedTv} />
+      <SliderComponent text="TV" data={trendingTv} />
       <GridHomeContainer title="Popular" type="tv" data={popularTv} />
     </ContentWrapper>
   );

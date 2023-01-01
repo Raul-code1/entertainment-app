@@ -16,7 +16,6 @@ const SideBar = () => {
                 isActive ? "nav-bars-links active side-bar-links" : "nav-bars-links side-bar-links "
               }
             >
-              {text}
               {icon}
             </NavLink>
           );
@@ -34,9 +33,9 @@ const SideBarWrapper = styled.nav`
   @media (min-width: 1000px) {
     display: block;
     background-color: var(--sideBarBgColor);
-    width: 55%;
+    width: 40%;
     margin: 0 auto;
-    height: 100%;
+    height: 90%;
     border-radius: var(--borderRadius);
     overflow: hidden;
   
@@ -49,12 +48,11 @@ const SideBarWrapper = styled.nav`
       align-items: center;
 
       .side-bar-links{
-        font-size: 1.25rem;
+        font-size: 1.875rem;
         font-weight: 100;
         display: flex;
         align-items: center;
         gap: 5px;
-        transition: var(--transition);
        
       }
       .side-bar-links:hover{

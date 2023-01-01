@@ -58,7 +58,7 @@ export const getAllCategoriesMoviesThunk = async (_, thunkAPI) => {
 export const getAllCategoriesTvThunk = async (_, thunkAPI) => {
   try {
     const popularTvRequest = theMovieDbApi.get(
-      `/tv/popular?api_key=${apiKey}`
+      `/tv/popular?api_key=${apiKey}&page=3`
     );
     const topRatedTvRequest = theMovieDbApi.get(
       `/tv/top_rated?api_key=${apiKey}`

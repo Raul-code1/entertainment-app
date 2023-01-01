@@ -3,6 +3,8 @@ import styled from "styled-components";
 import moment from "moment/moment";
 
 import { imgLink } from "../utils/apiHelpers";
+import {  gettingPath } from "../features/details/detailsSlice";
+import { useDispatch } from "react-redux";
 
 const SlidersCards = ({
   title,
@@ -13,11 +15,19 @@ const SlidersCards = ({
   first_air_date,
   media_type,
 }) => {
+  const dispatch=useDispatch();
   const navigate = useNavigate();
   const date = moment(release_date || first_air_date).format("YYYY");
 
+  const pathForDetails=`/${media_type}`;
+
+  const handleDetailsPageContent=()=>{
+    navigate(`${pathForDetails}/${id}`)
+    dispatch(gettingPath(pathForDetails))
+  }
+
   return (
-    <SliderCardWrapper onClick={() => navigate(`/${media_type}/${id}`)}>
+    <SliderCardWrapper onClick={handleDetailsPageContent}>
       <img src={`${imgLink}${backdrop_path}`} alt={title} className="img" />
       <div>
         <p className="date">{date}</p>

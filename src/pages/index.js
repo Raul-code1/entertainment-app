@@ -4,7 +4,7 @@ import ErrorPage from "./ErrorPage";
 import TvPage from "./Home/TvPage";
 import HomePage from "./Home/HomePage";
 import DetailsPage from "./Home/DetailsPage";
-
+import SearchPage from "./Home/SearchPage";
 
 export {
     HomeLayout,
@@ -13,4 +13,5 @@ export {
     TvPage,
     HomePage,
     DetailsPage,
+    SearchPage,
 }
