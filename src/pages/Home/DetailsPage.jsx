@@ -9,20 +9,23 @@ import { getDetailsContentPage } from "../../features/details/detailsSlice";
 
 
 const DetailsPage = () => {
-  const { movieOrTv, isLoading, path } = useSelector((store) => store.details);
+  const { movieOrTv, isLoading,errorMsgDetails } = useSelector((store) => store.details);
   const dispatch = useDispatch();
 
-  const { id }=useParams()
+  const { id,type }=useParams()
 
   useEffect(() => {
-    dispatch(getDetailsContentPage(id));
-  }, [path,id])
+    dispatch(getDetailsContentPage({id,type}));
+  }, [type,id])
   
 
   if (isLoading) {
-    return <h2>Loading Content...</h2>;
+    return <h2 className="section" >Loading Content...</h2>;
   }
   
+  if (errorMsgDetails) {
+    return <h2 className="section" >{errorMsgDetails}</h2>;
+  }
 
   return (
     <DetailsWrapper className="section">

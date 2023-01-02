@@ -26,19 +26,25 @@ export const getGenreOrSearchDataThunk=async({text,path},thunkAPI)=>{
 
     const { page,isSearchInput }=thunkAPI.getState().genresAndSearch;
 
-    let  url=`/discover/${path}?api_key=${apiKey}&page=${page}&with_genres=${text}`
-    if (isSearchInput) {
-        url=`/search/multi?api_key=${apiKey}&query=${text}&page=${page}`
-        
-    }
+    let url;
 
+    if (isSearchInput==='false') {
+        url=`/discover/${path}?api_key=${apiKey}&page=${page}&with_genres=${text}`
+        
+    }else{
+        url=`/search/multi?api_key=${apiKey}&query=${text}&page=${page}`
+    }
+    
     try {
         const {data}=await theMovieDbApi.get(url);
-        console.log(data);
+        console.log(url);
+        console.log(isSearchInput);
         return data;
     } catch (error) {
+        console.log(url);
+        console.log(isSearchInput);
         console.log(error);
-        return thunkAPI.rejectWithValue(error.response.data.status_message)
+        return thunkAPI.rejectWithValue(error.response.data.status_message ||error.response.data.errors)
     }
 }
 

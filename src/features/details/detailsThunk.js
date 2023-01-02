@@ -4,17 +4,17 @@ import { apiKey } from "../../utils/apiHelpers.jsx";
 
 
 
-export const getDetailsContentPageThunk=async(id,thunkAPI)=>{
+export const getDetailsContentPageThunk=async({id,type},thunkAPI)=>{
     
-    const { path }=thunkAPI.getState().details
 
     try {
 
-        const { data }= await theMovieDbApi.get(`${path}/${id}?api_key=${apiKey}`)
-        const {data:castData}=await theMovieDbApi.get(`${path}/${id}/credits?api_key=${apiKey}`)
+        const { data }= await theMovieDbApi.get(`${type}/${id}?api_key=${apiKey}`)
+        const {data:castData}=await theMovieDbApi.get(`${type}/${id}/credits?api_key=${apiKey}`)
         return {data,castData};
     } catch (error) {
         console.log(error);
+        return thunkAPI.rejectWithValue(error.response.data.status_message);
     }
 
 

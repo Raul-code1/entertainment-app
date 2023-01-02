@@ -1,10 +1,8 @@
 import moment from "moment/moment";
-import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import { imgLink } from "../utils/apiHelpers";
-import {  gettingPath } from "../features/details/detailsSlice";
 
 const GeneralCard = ({
   spanCol,
@@ -17,7 +15,6 @@ const GeneralCard = ({
   first_air_date,
   poster_path,
 }) => {
-  const dispatch=useDispatch()
   const navigate = useNavigate();
 
   const date = moment(release_date || first_air_date).format("YYYY");
@@ -25,8 +22,6 @@ const GeneralCard = ({
 
   const handleDetailsPageContent=()=>{
     navigate(`${pathForDetails}/${id}`)
-    dispatch(gettingPath(pathForDetails))
-    
   }
 
   return (
@@ -63,6 +58,7 @@ const CardWrapper = styled.div`
   .img-card-container {
     overflow: hidden;
     border-radius: var(--borderRadius);
+    max-height: 165px;
   }
   .info-card-container {
     padding-top: 0.625rem;

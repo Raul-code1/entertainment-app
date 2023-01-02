@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
 import Wrapper from "../../helpers/wrappers/MoviesTvPagesWrapper";
-import { getAllGenres, isInputFilterFalse } from "../../features/genresAndSearch/genresAndSearchSlice";
+import { getAllGenres, handlePage, isInputFilterFalse } from "../../features/genresAndSearch/genresAndSearchSlice";
 
 const MoviesPage = () => {
 
@@ -19,6 +19,10 @@ const MoviesPage = () => {
     return <h2>Loading...</h2>
   }
 
+  const handleClick = () =>{
+    dispatch( isInputFilterFalse())
+    dispatch( handlePage(1))
+  }
 
   return (
     <>
@@ -31,7 +35,7 @@ const MoviesPage = () => {
                 to={`/categories/movie/${id}`}
                 key={id}
                 className="bg-2 item"
-                onClick={()=>dispatch( isInputFilterFalse())}
+                onClick={handleClick}
                 >
                 {name}
               </Link>
@@ -43,7 +47,7 @@ const MoviesPage = () => {
               to={`/categories/movie/${id}`}
               key={id}
               className="bg-1 item "
-              onClick={()=>dispatch( isInputFilterFalse())}
+              onClick={handleClick}
             >
               {name}
             </Link>

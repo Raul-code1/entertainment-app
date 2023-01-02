@@ -6,6 +6,7 @@ import SliderComponent from './SliderComponent'
 import GridHomeContainer from "./GridHomeContainer";
 import GeneralCard from "./GeneralCard";
 import InfoDetails from "./InfoDetails";
+import PaginatedBtns from "./PaginatedBtns";
 
 export {
     SideBar,
@@ -16,4 +17,5 @@ export {
     GridHomeContainer,
     GeneralCard,
     InfoDetails,
+    PaginatedBtns,
 }

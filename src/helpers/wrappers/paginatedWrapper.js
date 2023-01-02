@@ -8,6 +8,7 @@ const Wrapper=styled.section`
     grid-column-gap: .4375rem;
 
 
+
     @media  ( min-width:767px ) {
         grid-template-columns: repeat(3,1fr);
     }

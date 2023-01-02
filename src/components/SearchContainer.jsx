@@ -4,7 +4,7 @@ import { FcSearch } from "react-icons/fc";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { getGenreOrSearchData, isInputFilterTrue } from "../features/genresAndSearch/genresAndSearchSlice";
+import {  isInputFilterTrue } from "../features/genresAndSearch/genresAndSearchSlice";
 
 const SearchContainer = () => {
 
@@ -25,7 +25,6 @@ const SearchContainer = () => {
 
     const pathData={ text: inputValue,path:'search'}
 
-    dispatch(getGenreOrSearchData(pathData))
     navigate(`/categories/search/${inputValue}`)
 
     setInputValue('')

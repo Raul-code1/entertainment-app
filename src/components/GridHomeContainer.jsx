@@ -4,23 +4,11 @@ import styled from "styled-components"
 import { GeneralCard }from './'
 
 const GridHomeContainer = ({ title ,type,data:{results} }) => {
-    
-    let tempTitle=title.split(' ');
-    let formattedTitle;
-
-    if (tempTitle.length >1) {
-        formattedTitle=title.replace(/ /g,'_')
-    }else{
-        formattedTitle=title;
-    }
-    const dynamicPath=`${type.toLowerCase().trim()}/${formattedTitle.toLowerCase().trim()}`
-
-
+   
   return (
     <GridHomeWrapper  >
       <div className="heading">
         <h3><span className="heading-title" >{title}</span> <span className="type-span" >{type}</span> </h3>
-        <span> <Link to={`/categories/${dynamicPath}`} className="links" >See more</Link> </span>
       </div>
       <section className="grid-home-section">
         { results?.slice(0,6).map((item,index)=>{

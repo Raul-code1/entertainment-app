@@ -2,15 +2,18 @@ import { createSlice,createAsyncThunk } from '@reduxjs/toolkit';
 
 import { getAllGenresThunk, getGenreOrSearchDataThunk } from './genresAndSearchThunk';
 
+
+
 const initialState={
     isLoading: false,
     movieGenres: [],
     tvGenres: [],
-    isSearchInput:false,
+    isSearchInput:localStorage.getItem('isSearchInput') ,
     genreOrSearchInputData:{},
     page:1,
-    totalPages:1,
+    totalPages:0,
     errorMessage:null,
+    maxPages:500
 };
 
 
@@ -22,11 +25,16 @@ export const genresAndSearchSlice = createSlice({
     initialState,
     reducers: {
         isInputFilterTrue: (state ) => {
-            state.isSearchInput = true;
+            state.isSearchInput = 'true';
+            localStorage.setItem('isSearchInput', state.isSearchInput);
         },
         isInputFilterFalse: (state ) => {
-            state.isSearchInput = false;
+            state.isSearchInput = 'false';
+            localStorage.setItem('isSearchInput', state.isSearchInput);
         },
+        handlePage:(state,{payload})=>{
+            state.page=payload
+        }
     },
     extraReducers:(builder)=>{
         builder.addCase(getAllGenres.pending,(state)=>{
@@ -45,7 +53,6 @@ export const genresAndSearchSlice = createSlice({
             state.isLoading=true;
         })
         .addCase(getGenreOrSearchData.fulfilled,(state,{payload})=>{
-            console.log(payload);
             const{total_pages}=payload;
             state.isLoading=false;
             state.genreOrSearchInputData=payload;
@@ -61,4 +68,4 @@ export const genresAndSearchSlice = createSlice({
 
 
 
-export const { isInputFilterTrue,isInputFilterFalse } = genresAndSearchSlice.actions;
+export const { isInputFilterTrue,isInputFilterFalse,handlePage } = genresAndSearchSlice.actions;

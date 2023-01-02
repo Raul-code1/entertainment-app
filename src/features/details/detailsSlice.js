@@ -7,8 +7,8 @@ import { getDetailsContentPageThunk } from './detailsThunk';
 const initialState={
     isLoading: false,
     movieOrTv:{},
-    path:localStorage.getItem('path') || '',
     cast:[],
+    errorMsgDetails:null
 }
 
 
@@ -19,10 +19,7 @@ export const detailsSlice = createSlice({
     name: 'details',
     initialState,
     reducers: {
-        gettingPath: (state,{payload} ) => {
-            state.path = payload;
-            localStorage.setItem('path',state.path)
-        },
+      
     },
     extraReducers:(builder)=>{
         builder.addCase(getDetailsContentPage.pending,(state)=>{
@@ -35,9 +32,12 @@ export const detailsSlice = createSlice({
             state.cast=castData;
             
         })
+        .addCase(getDetailsContentPage.rejected,(state,{payload})=>{
+            state.errorMsgDetails=payload;
+        })
     }
 });
 
 
 
-export const { gettingPath } = detailsSlice.actions;
+// export const {  } = detailsSlice.actions;
