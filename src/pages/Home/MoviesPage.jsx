@@ -4,6 +4,7 @@ import { useEffect } from "react";
 
 import Wrapper from "../../helpers/wrappers/MoviesTvPagesWrapper";
 import { getAllGenres, handlePage, isInputFilterFalse } from "../../features/genresAndSearch/genresAndSearchSlice";
+import { Loading } from '../../components'
 
 const MoviesPage = () => {
 
@@ -16,7 +17,7 @@ const MoviesPage = () => {
   }, [])
   
   if (isLoading) {
-    return <h2>Loading...</h2>
+     return <Loading color='#fff' type='spin'  />;
   }
 
   const handleClick = () =>{
@@ -27,7 +28,7 @@ const MoviesPage = () => {
   return (
     <>
     <h2 className="section" style={{fontWeight:'100',paddingTop:'10px'}} >Search by movies genres</h2>
-      <Wrapper className="section">
+      <Wrapper className="section section animate__animated animate__fadeIn ">
         {movieGenres.map(({ id, name }, index) => {
           if (index % 2 === 0) {
             return (

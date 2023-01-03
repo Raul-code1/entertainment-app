@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 import { sideBarLinks } from "../utils/navLinks";
+import theMovieDbLogo from '../assets/theMovieDbLogo.png'
 
 const SideBar = () => {
   return (
@@ -20,6 +21,7 @@ const SideBar = () => {
             </NavLink>
           );
         })}
+        <NavLink className='logo-tmdb'  to='/theMovieDb' ><img src={theMovieDbLogo} alt='The movie db' className="img"  /></NavLink>
       </div>
     </SideBarWrapper>
   );
@@ -40,6 +42,9 @@ const SideBarWrapper = styled.nav`
     overflow: hidden;
   
 
+      .logo-tmdb{
+        width: 75%;
+      }
     .side-bar-container {
       height: 100%;
       display: flex;

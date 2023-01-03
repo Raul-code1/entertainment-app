@@ -37,12 +37,8 @@ export const getGenreOrSearchDataThunk=async({text,path},thunkAPI)=>{
     
     try {
         const {data}=await theMovieDbApi.get(url);
-        console.log(url);
-        console.log(isSearchInput);
         return data;
     } catch (error) {
-        console.log(url);
-        console.log(isSearchInput);
         console.log(error);
         return thunkAPI.rejectWithValue(error.response.data.status_message ||error.response.data.errors)
     }

@@ -2,7 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 import { navBarItems } from "../utils/navLinks";
-
+import theMovieDbLogo from '../assets/theMovieDbLogo.png'
 const NavBar = () => {
   return (
     <NavBarWrapper>
@@ -19,6 +19,7 @@ const NavBar = () => {
           </NavLink>
         );
       })}
+      <NavLink className='logo-tmdb-nav'  to='/theMovieDb' ><img src={theMovieDbLogo} alt='The movie db' className="img"  /></NavLink>
     </NavBarWrapper>
   );
 };
@@ -36,9 +37,12 @@ const NavBarWrapper = styled.nav`
   right: 0;
   left: 0;
 
- 
+ z-index: 99;
 
-
+ .logo-tmdb-nav{
+  height: 30%;
+  width: 50px;
+ }
   @media  ( min-width:600px ) {
     .nav-bars-links{
       font-size: 2rem

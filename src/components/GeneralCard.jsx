@@ -54,6 +54,8 @@ export default GeneralCard;
 const CardWrapper = styled.div`
   padding-top: 1.25rem;
   cursor: pointer;
+  overflow: hidden;
+  border-radius: var(--borderRadius);
 
   .img-card-container {
     overflow: hidden;

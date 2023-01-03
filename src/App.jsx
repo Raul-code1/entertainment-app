@@ -1,6 +1,6 @@
 import { BrowserRouter,Routes,Route } from "react-router-dom";
 
-import { DetailsPage, ErrorPage, HomeLayout, HomePage, MoviesPage, SearchPage, TvPage } from "./pages";
+import { DetailsPage, ErrorPage, HomeLayout, HomePage, MoviesPage, SearchPage, TheMovieDb, TvPage } from "./pages";
 
 const App = () => {
   return (
@@ -14,8 +14,8 @@ const App = () => {
             <Route path="/:type/:id" element={<DetailsPage />} />
             <Route path="/categories/:type/:filter" element={<SearchPage />} />
         </Route>
-        {/* //todo:arrelgar pagina de error en vista movil */}
         <Route path="/*" element={ <ErrorPage />} />
+        <Route path="/theMovieDb" element={ <TheMovieDb /> }  />
       </Routes>
       
     </BrowserRouter>

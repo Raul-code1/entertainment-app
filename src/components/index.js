@@ -7,6 +7,7 @@ import GridHomeContainer from "./GridHomeContainer";
 import GeneralCard from "./GeneralCard";
 import InfoDetails from "./InfoDetails";
 import PaginatedBtns from "./PaginatedBtns";
+import Loading from "./Loading";
 
 export {
     SideBar,
@@ -18,4 +19,5 @@ export {
     GeneralCard,
     InfoDetails,
     PaginatedBtns,
+    Loading,
 }

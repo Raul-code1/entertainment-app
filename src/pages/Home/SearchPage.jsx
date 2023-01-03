@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { GeneralCard, PaginatedBtns } from "../../components";
 
 import Wrapper from "../../helpers/wrappers/paginatedWrapper";
 import { getGenreOrSearchData } from "../../features/genresAndSearch/genresAndSearchSlice";
 import { Link, useParams } from "react-router-dom";
+import { GeneralCard, Loading, PaginatedBtns } from "../../components";
 
 const SearchPage = () => {
   const { type, filter } = useParams();
@@ -21,11 +21,9 @@ const SearchPage = () => {
     dispatch(getGenreOrSearchData({ text: filter, path: type }));
   }, [page, type, filter]);
 
-  console.log(filter);
-  console.log(type);
-
+  
   if (isLoading) {
-    return <h2>Loading</h2>;
+    return <Loading color='#fff' type='spin'  />;
   }
 
   if (results?.length === 0) {
@@ -39,13 +37,13 @@ const SearchPage = () => {
     );
   }
 
-  /* if (errorMessage) {
+  if (errorMessage) {
     return <h2 className="section">{errorMessage}</h2>;
-  } */
+  }
 
   return (
    <>
-     <Wrapper className="section">
+     <Wrapper className="section animate__animated animate__fadeIn">
       {results?.map((item) => {
         if (item.media_type) {
           return (

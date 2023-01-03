@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 
-import { InfoDetails } from "../../components";
+import { InfoDetails, Loading } from "../../components";
 import { imgLink } from "../../utils/apiHelpers";
 import { getDetailsContentPage } from "../../features/details/detailsSlice";
 
@@ -20,7 +20,7 @@ const DetailsPage = () => {
   
 
   if (isLoading) {
-    return <h2 className="section" >Loading Content...</h2>;
+    return <Loading color='#fff' type='spin'  />;
   }
   
   if (errorMsgDetails) {
@@ -30,7 +30,7 @@ const DetailsPage = () => {
   return (
     <DetailsWrapper className="section">
       {/* Details image container */}
-      <div className="img-details-container">
+      <div className="img-details-container animate__animated animate__fadeInLeft  ">
         <img className="img" src={`${imgLink}${movieOrTv?.poster_path || movieOrTv?.backdrop_path}`}  />
       </div>
       {/* Details image container */}
@@ -48,6 +48,7 @@ const DetailsWrapper = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: -99;
   .img-details-container {
     overflow: hidden;
     width: 70%;

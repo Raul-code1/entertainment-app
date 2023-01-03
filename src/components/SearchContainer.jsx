@@ -4,7 +4,7 @@ import { FcSearch } from "react-icons/fc";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import {  isInputFilterTrue } from "../features/genresAndSearch/genresAndSearchSlice";
+import {  handlePage, isInputFilterTrue } from "../features/genresAndSearch/genresAndSearchSlice";
 
 const SearchContainer = () => {
 
@@ -22,6 +22,7 @@ const SearchContainer = () => {
     }
 
     dispatch(isInputFilterTrue())
+    dispatch(handlePage(1))
 
     const pathData={ text: inputValue,path:'search'}
 
@@ -52,7 +53,7 @@ export default SearchContainer;
 const SearchWrapper = styled.section`
   margin-top: 0.625rem;
   height: 8vh;
-
+  
   .form {
     display: flex;
     align-items: center;
@@ -61,13 +62,16 @@ const SearchWrapper = styled.section`
     .search-icon {
       font-size: 1.875rem;
     }
-
+    
     .search-input {
       min-width: 70%;
       height: 100%;
       outline: none;
       border: none;
       background-color: var(--backgroundColor);
+      background-color: #171E31;
+      border-radius: var(--borderRadius);
+      padding: 0rem 1.125rem;
       color: var(--textColor);
     }
   }
@@ -76,7 +80,7 @@ const SearchWrapper = styled.section`
     .form {
       .search-input {
         width: 90%;
-        font-size: 1.5625rem;
+        font-size: 1.25rem;
       }
 
       .search-btn {

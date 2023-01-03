@@ -11,7 +11,7 @@ const PaginatedBtns = () => {
 
   const nextPage = () => {
     let newPage = page + 1;
-    if (newPage > maxPages) {
+    if (newPage > totalPages) {
       newPage = 1;
     }
     dispatch(handlePage(newPage));
@@ -61,6 +61,7 @@ const Wrapper = styled.div`
     display: flex;
     overflow: hidden;
     border-radius: var(--borderRadius);
+    font-size: .875rem;
 
     .pages {
       background-color: var(--textColor);

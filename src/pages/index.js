@@ -5,6 +5,7 @@ import TvPage from "./Home/TvPage";
 import HomePage from "./Home/HomePage";
 import DetailsPage from "./Home/DetailsPage";
 import SearchPage from "./Home/SearchPage";
+import TheMovieDb from "./TheMovieDb";
 
 export {
     HomeLayout,
@@ -14,4 +15,5 @@ export {
     HomePage,
     DetailsPage,
     SearchPage,
+    TheMovieDb,
 }

@@ -29,6 +29,7 @@ const Wrapper = styled.div`
 
   h1{
     letter-spacing: var(--letterSpacing);
+    font-size: 1.875rem;
   }
 
   .error-icon{

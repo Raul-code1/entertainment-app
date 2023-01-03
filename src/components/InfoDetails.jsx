@@ -23,7 +23,7 @@ const InfoDetails = ({
   const date =moment(release_date || first_air_date).format('YYYY-MM-DD')
 
   return (
-    <Wrapper>
+    <Wrapper className="animate__animated animate__pulse " >
       <h1>{original_title || name}</h1>
       <p className="tagline" >{tagline}</p>
       <div>
@@ -56,6 +56,7 @@ const InfoDetails = ({
         {genres?.map((g) => {
           return <p className="genres-box" key={g.id}>{g.name}</p>;
         })}
+        
         </div>
       </div>
       <div className="overview">
@@ -117,11 +118,13 @@ const Wrapper =styled.div`
     div{
       display: flex;
       gap: 1.125rem;
+      flex-direction: column;
     }
-
+    
     .genres-box{
       border: 1px solid #ffffff;
-      padding: .25rem;
+      width: 30%;
+      padding: .625rem;
       border-radius: var(--borderRadius);
     }
     
@@ -150,6 +153,17 @@ const Wrapper =styled.div`
 
     .headings-childs{
       font-size: 1.0625rem;
+    }
+    .genres{
+      div{
+      flex-direction: row;
+    }
+    
+    .genres-box{
+      width: auto;
+      border-radius: var(--borderRadius);
+    }
+
     }
   }
 

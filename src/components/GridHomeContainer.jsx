@@ -6,7 +6,7 @@ import { GeneralCard }from './'
 const GridHomeContainer = ({ title ,type,data:{results} }) => {
    
   return (
-    <GridHomeWrapper  >
+    <GridHomeWrapper className="animate__animated animate__fadeIn"  >
       <div className="heading">
         <h3><span className="heading-title" >{title}</span> <span className="type-span" >{type}</span> </h3>
       </div>
