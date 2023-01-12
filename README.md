@@ -1,7 +1,7 @@
 
 # Movie App
 
-Movie App is a module built with React, Redux, and Vite. It uses the following dependencies: 
+Entertainment app built with React, Redux, and Vite. It uses the following dependencies: 
 
 - `@reduxjs/toolkit` 
 - `animate.css` 
