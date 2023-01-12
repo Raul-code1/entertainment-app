@@ -39,5 +39,3 @@ export const detailsSlice = createSlice({
 });
 
 
-
-// export const {  } = detailsSlice.actions;
